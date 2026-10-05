@@ -1,0 +1,9 @@
+{
+  "name": "study-task-manager",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A simple Chinese study task manager with local persistence.",
+  "scripts": { "start": "node server.js", "test": "node --test" },
+  "engines": { "node": ">=20" }
+}

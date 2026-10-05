@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#295f4e">
+  <title>学有计划 · 学习任务管理器</title>
+  <link rel="stylesheet" href="/src/styles.css">
+  <script type="module" src="/src/app.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="学有计划首页"><span class="brand-mark">学</span><span>学有计划<small>STUDY, AT YOUR PACE</small></span></a>
+    <div class="nav-label">我的学习空间</div>
+    <div class="nav-current"><span aria-hidden="true">▤</span> 学习任务 <span class="nav-dot"></span></div>
+    <div class="sidebar-note"><span class="note-line"></span><h2>每天前进一点点。</h2><p>把大目标拆成小任务，<br>为每一次完成留个记号。</p></div>
+    <div class="local-note"><span aria-hidden="true">◉</span> 数据保存在当前浏览器</div>
+  </aside>
+  <main>
+    <header class="page-header"><div><p class="eyebrow" id="today"></p><h1>你的计划，慢慢实现。</h1><p class="subtitle">整理今天的学习任务，把注意力留给真正重要的事。</p></div><button class="primary top-add" id="focus-form">＋ 新建任务</button></header>
+    <section class="overview" aria-label="学习进度">
+      <div class="progress-card"><div class="progress-copy"><p class="eyebrow">学习进度</p><h2>每一项完成，都算数。</h2><p id="progress-text">从你的第一个小目标开始。</p><div class="progress-track" role="progressbar" aria-label="任务完成进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-fill"></div></div></div><div class="progress-ring" id="progress-ring"><span id="progress-percent">0%</span><small>已完成</small></div></div>
+      <div class="stat-card"><span class="stat-icon">↗</span><p>待完成</p><strong id="remaining-count">0</strong><small>一步一步来</small></div>
+      <div class="stat-card"><span class="stat-icon amber">◷</span><p>已逾期</p><strong id="overdue-count">0</strong><small>给计划一点调整</small></div>
+    </section>
+    <div id="storage-warning" class="warning" role="alert" hidden></div>
+    <div class="workspace">
+      <section class="task-panel" aria-labelledby="task-heading">
+        <div class="panel-heading"><div><h2 id="task-heading">学习清单 <span id="total-count">0</span></h2><p>今天的小事，也是明天的积累。</p></div></div>
+        <div class="task-controls"><div class="filters" aria-label="任务状态筛选"><button data-filter="all" class="active" aria-pressed="true">全部 <span id="filter-all">0</span></button><button data-filter="pending" aria-pressed="false">待完成 <span id="filter-pending">0</span></button><button data-filter="completed" aria-pressed="false">已完成 <span id="filter-completed">0</span></button></div><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索任务或学科" aria-label="搜索任务或学科"></label></div>
+        <ul class="task-list" id="task-list"></ul>
+        <div class="empty-state" id="empty-state"><div class="empty-art" aria-hidden="true">✓</div><h3 id="empty-title">给学习一个小小的开始</h3><p id="empty-description">添加一项任务，把下一步变得清楚。</p><button class="secondary" id="empty-add">＋ 添加第一个任务</button></div>
+        <div class="list-footer"><span id="visible-count">共 0 项任务</span><span>小步前进，也在前进。</span></div>
+      </section>
+      <aside class="form-panel" aria-labelledby="form-title"><div class="form-accent"></div><p class="eyebrow">ONE STEP AT A TIME</p><h2 id="form-title">下一个小目标</h2><p class="form-intro">写下来，给它一个开始。</p><form id="task-form">
+        <label for="title">任务名称 <span class="required">*</span></label><input id="title" name="title" placeholder="例如：完成数据库第 3 章练习" maxlength="100" required>
+        <label for="subject">学科 / 分类</label><input id="subject" name="subject" placeholder="例如：数据库、英语、项目实践" maxlength="30">
+        <label for="due-date">截止日期</label><input id="due-date" name="dueDate" type="date">
+        <label for="priority">优先级</label><select id="priority" name="priority"><option value="normal">普通 · 按计划来</option><option value="high">重要 · 优先处理</option><option value="low">低 · 有空再做</option></select>
+        <p class="form-error" id="form-error" role="alert" hidden></p><button class="primary form-submit" type="submit" id="submit-task">＋ 添加到清单</button><button class="cancel-edit" id="cancel-edit" type="button" hidden>取消编辑</button>
+      </form><div class="form-tip"><strong>一个小建议</strong><p>“学习英语”有点大。试试“背 20 个单词”，你会更容易开始。</p></div></aside>
+    </div>
+    <footer class="page-footer">学有计划 <span>少一点焦虑，多一点行动。</span></footer>
+  </main>
+  <template id="task-template"><li class="task-row"><input class="task-check" type="checkbox"><div class="task-content"><div class="task-title"></div><div class="task-meta"><span class="subject-tag"></span><span class="due-label"></span><span class="priority-tag"></span></div></div><div class="task-actions"><button class="edit-button" type="button">编辑</button><button class="delete-button" type="button">删除</button></div></li></template>
+  <dialog id="delete-dialog" aria-labelledby="delete-title" aria-describedby="delete-description"><h2 id="delete-title">删除这项任务？</h2><p id="delete-description"></p><div class="dialog-actions"><button class="secondary" id="dismiss-delete" type="button">保留任务</button><button class="danger" id="confirm-delete" type="button">确认删除</button></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
