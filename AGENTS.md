@@ -14,4 +14,4 @@
 - 先保持小型 MVP，新增框架、服务端、账号与第三方资源前重新评估实际需求。
 - 代码提交与 GitHub 发布前核对 .gitignore、拟提交文件和实际测试结果。
 - Qoder 可使用 programming-squad:start-squad 或 start-github-project 继续迭代。真实调用与检查结果要留痕，不伪造多智能体执行。
-- 当前只完成本地开发，未授权具体 GitHub 仓库和可见性，尚未远端发布。
+- 已按用户授权发布到公开仓库 https://github.com/hughliat/study-task-manager 的 main 分支；后续变更核对当前任务授权与远端状态，不覆盖历史。

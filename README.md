@@ -2,6 +2,14 @@
 
 一个适合初学者阅读和继续迭代的中文学习任务管理器。零第三方依赖，数据保存在当前浏览器中。
 
+公开仓库：https://github.com/hughliat/study-task-manager
+
+```sh
+git clone https://github.com/hughliat/study-task-manager.git
+cd study-task-manager
+npm start
+```
+
 ## 功能
 
 - 添加、编辑和删除任务；删除前确认。
@@ -69,7 +77,8 @@ AGENTS.md           Qoder 后续迭代规则
 
 ## 发布到 GitHub
 
-目前尚未创建远端仓库或推送。发布前确定仓库名和公开/私有选择，核对拟提交文件并再次运行测试。
+已发布到公开仓库 `hughliat/study-task-manager` 的 `main` 分支，并比较本地与远端提交 SHA 核验推送。
+后续发布前核对拟提交文件并再次运行测试。
 使用已经配置的 `programming-squad:github-release` 技能，或手动通过 Git 发布。
 GitHub 代码仓库不等于在线网站；需要 GitHub Pages 时另行配置并验证静态路径。
 
